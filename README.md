@@ -1,0 +1,1 @@
+This contains React work for a motel that rents and returns 16 different rooms
