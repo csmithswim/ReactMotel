@@ -1,13 +1,10 @@
 // Imports
 import React, { createContext, useState } from 'react'
 
-//Function to create rooms
-
-
 // Exporting and creating our Room Context
 export const RoomContext = createContext();
 
-// Exporing our context provider
+// Exporting our context provider
 export default function RoomContextProvider(props) {
     const makeRooms = (floors, rooms) => {
         let totalRooms = [];
@@ -26,7 +23,9 @@ export default function RoomContextProvider(props) {
         // console.log(totalRooms)
         return totalRooms;
     }
+
     let totalRooms = makeRooms(4,4);
+    
     const [motelRooms, setRooms] = useState(totalRooms);   
     return (
       <RoomContext.Provider value={{motelRooms}}>
