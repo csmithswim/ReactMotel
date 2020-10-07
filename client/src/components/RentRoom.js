@@ -1,20 +1,34 @@
+// [] create a button on Rent component, once pressed it should take a name and set the state/LS
+
 import React, { useContext } from 'react'
 import { RoomContext } from '../context/RoomContext'
 
-//Import our motel rooms object
-
 export default function RentRoom() {
-//Have a function that changes the renter value to the person's name, this can be done with a prompt tied to a method
 
-const { motelRooms } = useContext(RoomContext);
-// console.log(motelRooms)
+    const { motelRooms } = useContext(RoomContext);
 
-let availableRooms = motelRooms.filter(motel => motel.renter===null)
-let renderOnline = availableRooms.map((i) => <li key={i}>{i.renter}</li>);
-// console.log(availableRooms)
-    return (
-        <div>
-            {renderOnline}
-        </div>
-    )
-}
+    let topFloor = motelRooms.filter(motel => motel.renter ===null)
+    
+    console.log(topFloor)
+    
+        return (
+            <div>
+                <h3>
+                    These Rooms Are Available To Rent
+                </h3>
+                    <div>
+                        {motelRooms.filter(motel => motel.renter === null).map(
+                            ({room, price}) => {
+                                return (
+                                <div>
+                                {room} Is Available And Costs {price} A Night.
+                                </div>
+                                )
+                            }
+                        )
+                    }
+                    </div>
+            </div>
+        )
+    }
+    
