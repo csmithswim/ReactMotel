@@ -9,18 +9,22 @@ Renting Component;
 The renting interface should be set up as one button to start with. It will be the ‘express checkout’ option. This button should only display if there are rooms available otherwise a message should show in its place; ‘There are no rooms available at this moment’. This button should pick the cheapest available room and rent that to the user. A prompt should be used to ask the name who is renting this room. Once your user enters a name that rooms rented property should be set to the user's name, the state and context should be modified which in turn should also update the local storage.
 Return Component;
 The return component should be set up as a flex display (use styling flexWrap: ‘wrap’) of all the rooms that are being rented. When the room is clicked upon a prompt to enter your name should appear. If you enter in the correct name the rooms renter property should be set back to null and the state/LS should update to reflect that.
+
+Cullen Task List
+[]Import UUID system to provide unique keys to the hotel rooms
+
+CD's 
 Task List
     [x] initialize React project
     [x] create navigation bar
     [x] create components for Rent and Return components.
-    [] have the renting page or returning page display when a navbar button is pressed
+    [x] have the renting page or returning page display when a navbar button is pressed
     [x] create context for hotel rooms
     [x] create short algorithm to create room data programmatically and set that data as the initial value of the roomsContext
     [x] provide roomsContext to the application in App.js
     [] create a button on Rent component, once pressed it should take a name and set the state/LS
-    [] create the a display on the Return component that will show all the unavailable rooms
+    [.5] create the a display on the Return component that will show all the unavailable rooms
     [] implement features on Return items, when you click on one it should prompt the user to enter their name. If they enter the correct name the rooms renter property should go back to default.
-
 
 Extra Tasks after completion of main app
     [] include the roomsContext in the navbar component and display how many rooms are currently available with simple text
@@ -32,6 +36,7 @@ Began work on algorithm in RoomContext.js
 10/6 10 AM
 Begin work on RoomContext
 10/6 5:30 PM - 9PM - added NavBar, RentRoom, ReturnRoom and Roomlist components. Added context and local storage to the App and got local state to display.
+10/7 8 AM - Added filter/map methods to RentRoom/ReturnRoom to display when renter is null, migrating it to NavBar components to display which rooms are available when a button is clicked.
 
     
 
