@@ -7,20 +7,23 @@ export default function ReturnRoom() {
 
 const { motelRooms } = useContext(RoomContext);
 
-let topFloor = motelRooms.filter(motel => motel.renter ===null)
+let unAvailableRooms = motelRooms.filter(motel => motel.renter !== null)
 
-console.log(topFloor)
+const CheckIn = (e) => {
+
+    console.log(e.target)
+}
 
     return (
         <div>
             <h3>
-                These Rooms Are Not Available To Rent
+                There are {unAvailableRooms.length} Rooms Not Available To Rent
             </h3>
                 <div>
                     {motelRooms.filter(motel => motel.renter !== null).map(
-                        ({room, price}) => {
+                        ({room, price},i) => {
                             return (
-                            <div>
+                            <div id={room.id}>
                             {room} Is Available And Costs {price} A Night.
                             </div>
                             )
