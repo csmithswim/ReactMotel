@@ -1,7 +1,5 @@
-// Imports
 import React, { createContext, useState, useEffect } from 'react'
 
-// Exporting and creating our Room Context
 export const RoomContext = createContext();
 
 export default function RoomContextProvider(props) {
@@ -19,43 +17,47 @@ function roomGen(floors, rooms) {
                 }     
             }
         }
-    // console.log(totalRooms)
     return totalRooms;
 }    
 
-let twoDArray = roomGen(4,4);
-let totalRooms = twoDArray.flat()
-   
-const savedRooms = JSON.parse(localStorage.getItem('Server'));
+let totalRooms = roomGen(4,4);
 
-const [motelRooms, setRooms] = useState(savedRooms || totalRooms);   
-
-const ShowAvailableRooms = () => {
-    let availableRooms = totalRooms.filter(motel => motel.room>200)
-    // console.log(availableRooms)
-    setRooms(availableRooms)
-}
-
-const ShowRentedRooms = () => {
-    let rentedRooms = totalRooms.filter(motel => motel.room < 200)
-    setRooms(rentedRooms)
-}
-
-const ShowAllRooms = () => {
-    setRooms(savedRooms)
-}
+const [motelRooms, setRooms] = useState(() => {
+    const localData = localStorage.getItem('motelRooms')
+    if (localData) {
+        return (JSON.parse(localData));
+    } else return totalRooms;
+})
 
 useEffect(() => {
-    localStorage.setItem('Server', JSON.stringify(motelRooms))
+    localStorage.setItem('motelRooms', JSON.stringify(motelRooms))
 }, [motelRooms])
 
+console.log(motelRooms)
     return (
-      <RoomContext.Provider value={{motelRooms, ShowAvailableRooms, ShowRentedRooms, ShowAllRooms}}>
+      <RoomContext.Provider value={{motelRooms, setRooms}}>
           {props.children}
         </RoomContext.Provider>
     )
 }
 
+
+
+
+// const ShowAvailableRooms = () => {
+//     let availableRooms = totalRooms.filter(motel => motel.room>200)
+//     // console.log(availableRooms)
+//     setRooms(availableRooms)
+// }
+
+// const ShowRentedRooms = () => {
+//     let rentedRooms = totalRooms.filter(motel => motel.room < 200)
+//     setRooms(rentedRooms)
+// }
+
+// const ShowAllRooms = () => {
+//     setRooms(savedRooms)
+// }
 
 
 
