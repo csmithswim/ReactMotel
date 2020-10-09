@@ -1,35 +1,42 @@
-// [x] create the a display on the Return component that will show all the unavailable rooms
-// [] implement features on Return items, when you click on one it should prompt the user to enter their name. If they enter the correct Same the rooms renter property should go back to default.
 import React, { useContext } from 'react'
 import { RoomContext } from '../context/RoomContext'
 
 export default function ReturnRoom() {
 
-const { motelRooms } = useContext(RoomContext);
+const { motelRooms, setRooms } = useContext(RoomContext);
 
 let unAvailableRooms = motelRooms.filter(motel => motel.renter !== null)
 
-const CheckIn = (e) => {
-
-    console.log(e.target)
+const CheckOut = (e) => {
+    if (prompt("Do you want to check out? Y/N") === "Y"){
+        let guest = prompt("Enter your name:")
+        console.log(guest)
+        console.log(motelRooms[e.target.id].renter)
+            if(guest===motelRooms[e.target.id].renter){
+               motelRooms[e.target.id].renter=null
+               setRooms([...motelRooms])
+               console.log(motelRooms[e.target.id].renter)
+            }
+    }
 }
-
     return (
         <div>
             <h3>
                 There are {unAvailableRooms.length} Rooms Not Available To Rent
             </h3>
                 <div>
-                    {motelRooms.filter(motel => motel.renter !== null).map(
-                        ({room, price},i) => {
-                            return (
-                            <div id={room.id}>
-                            {room} Is Available And Costs {price} A Night.
-                            </div>
+                    {motelRooms.map(
+                        ({room,renter,price},i) => {
+                            if (renter!== null){
+                                return (
+                                        <div   id = {i} key={i}>
+                                        <button id = {i} key={i} onClick={CheckOut}>Click To Check Out</button>
+                                        {room} Is Available And Costs {price} A Night.
+                                        </div>
+                                    )} else return null;
+                                }
                             )
                         }
-                    )
-                }
                 </div>
         </div>
     )
