@@ -28,37 +28,20 @@ const [motelRooms, setRooms] = useState(() => {
         return (JSON.parse(localData));
     } else return totalRooms;
 })
+const [displayA, setDisplayA] = useState(true)
 
+const [displayUnAvailable, setDisplayUnAvailable] = useState(true)
+
+console.log(displayA)
 useEffect(() => {
     localStorage.setItem('motelRooms', JSON.stringify(motelRooms))
 }, [motelRooms])
 
 console.log(motelRooms)
-    return (
-      <RoomContext.Provider value={{motelRooms, setRooms}}>
+
+    return (       
+      <RoomContext.Provider value={{motelRooms, setRooms, displayA, setDisplayA, displayUnAvailable, setDisplayUnAvailable}}>      
           {props.children}
         </RoomContext.Provider>
     )
 }
-
-
-
-
-// const ShowAvailableRooms = () => {
-//     let availableRooms = totalRooms.filter(motel => motel.room>200)
-//     // console.log(availableRooms)
-//     setRooms(availableRooms)
-// }
-
-// const ShowRentedRooms = () => {
-//     let rentedRooms = totalRooms.filter(motel => motel.room < 200)
-//     setRooms(rentedRooms)
-// }
-
-// const ShowAllRooms = () => {
-//     setRooms(savedRooms)
-// }
-
-
-
-
