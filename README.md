@@ -22,12 +22,12 @@ Task List
     [x] create context for hotel rooms
     [x] create short algorithm to create room data programmatically and set that data as the initial value of the roomsContext
     [x] provide roomsContext to the application in App.js
-    [] create a button on Rent component, once pressed it should take a name and set the state/LS
-    [.5] create the a display on the Return component that will show all the unavailable rooms
-    [] implement features on Return items, when you click on one it should prompt the user to enter their name. If they enter the correct name the rooms renter property should go back to default.
+    [x] create a button on Rent component, once pressed it should take a name and set the state/LS
+    [x] create the a display on the Return component that will show all the unavailable rooms
+    [x] implement features on Return items, when you click on one it should prompt the user to enter their name. If they enter the correct name the rooms renter property should go back to default.
 
 Extra Tasks after completion of main app
-    [] include the roomsContext in the navbar component and display how many rooms are currently available with simple text
+    [x] include the roomsContext in the navbar component and display how many rooms are currently available with simple text
     [] implement a monetary system. User gets $300 (or whatever amount) to start with. And as they rent rooms they have the rooms cost taken out (plus a fixed deposit). When they return their room they should get their deposit back. To keep track of how much money a user has that data should be in its own context and stored in the context’s state and LS.
 
 
@@ -37,7 +37,8 @@ Began work on algorithm in RoomContext.js
 Begin work on RoomContext
 10/6 5:30 PM - 9PM - added NavBar, RentRoom, ReturnRoom and Roomlist components. Added context and local storage to the App and got local state to display.
 10/7 8 AM - Added filter/map methods to RentRoom/ReturnRoom to display when renter is null, migrating it to NavBar components to display which rooms are available when a button is clicked.
-
-    
+10/7 4 pm - Added methods to filter through available and unavailable rooms but it mutates the state/local storage, need to circle back and fix that.
+10/8 2 pm - Added a book room method to RentRoom component that allows a user to input their name and then change the array of objects.
+10/9 5 PM - Added two buttons to toggle between the rent and return components and refactored/cleaned up some code. All main tasks complete.
 
 
